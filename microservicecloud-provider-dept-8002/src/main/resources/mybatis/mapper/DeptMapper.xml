@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangxb.springcloud.dao.DeptDao">
+    <select id="findById" resultType="com.wangxb.springcloud.entity.Dept">
+        select deptno,dname as "deptName",db_source as dbsource from DEPT where deptno = #{deptno}
+    </select>
+    <select id="findAll" resultType="Dept">
+        select deptno,dname as "deptName",db_source as dbsource from DEPT
+    </select>
+    <insert id="addDept" parameterType="Dept">
+        INSERT INTO dept(dname,db_source) value (#{deptName}  ,DATABASE())
+    </insert>
+</mapper>

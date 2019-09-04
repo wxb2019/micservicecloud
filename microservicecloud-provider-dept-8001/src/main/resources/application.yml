@@ -1,0 +1,37 @@
+server:
+  port: 8001
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml #mybatis配置文件所在文件
+  type-aliases-package: com.wangxb.springcloud.entity #所有entity别名类所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+spring:
+  application:
+    name: MICROSERVICECLOUD-DEPT
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB01?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: microservicecloud-dept8001
+    prefer-ip-address: true
+#info:
+#  app.name: wangxb-microservicecloud
+#  company.name: www.wangxb.com
+#  build.artifactId: $project.artifactId$
+#  build.version: $project.version$
+info:
+  app.name: wangxb-microservicecloud
+  company.name: www.wangxb.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
